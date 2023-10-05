@@ -1,9 +1,17 @@
+import numpy as np
+
 class board:
 
     def __init__(self, x, y):
+        self.width = x
+        self.height = y
         self.grid = self.createBoard(x, y)
 
     def setMove(self, x, y, player):
+        # if not x > 0 and x <= self.width:
+        #     return
+        # if not y > 0 and y <= self.width:
+        #     return
         self.grid[y][x] = player
 
     def checkIfFilled(self):
@@ -22,7 +30,11 @@ class board:
             rows.append(columns)
         return rows
 
+    def printBoard(self):
+        print(np.matrix(self.grid))
+
     def checkLine(self, line):
+        print("|"+line+"|")
         if line == "xxx":
             return [True, "x"]
         elif line == "ooo":
